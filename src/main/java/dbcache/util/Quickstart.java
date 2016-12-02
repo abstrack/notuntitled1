@@ -64,7 +64,7 @@ public class Quickstart {
 
     /**
      * Global instance of the scopes required by this quickstart.
-     * <p>
+     * <th>
      * If modifying these scopes, delete your previously saved credentials
      * at ~/.credentials/sheets.googleapis.com-java-quickstart
      */

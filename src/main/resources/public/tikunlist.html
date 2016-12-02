@@ -1,0 +1,52 @@
+<!doctype html>
+<html ng-app="myapp">
+<head>
+    <title>tikuns application</title>
+    <script src="https://code.angularjs.org/1.3.9/angular.js"></script>
+    <script src="https://code.angularjs.org/1.3.9/angular-resource.js"></script>
+    <script src="TikunController.js"></script>
+</head>
+
+<body ng-controller="TikunController">
+<table>
+    <thead>
+    <tr>
+    <th>Number</th>
+    <th>Date</th>
+    <th>Month</th>
+    <th>Sniff</th>
+    <th>Number</th>
+    <th>Model</th>
+    <th>IMEI</th>
+    <th>Income</th>
+    <th>Warranty</th>
+    <th>Comments</th>
+    <th>Technician</th>
+    <th>Minutes</th>
+    <th>Repaired</th>
+    </tr>
+    </thead>
+
+
+
+   <tr ng-repeat="tikun in tikunim">
+    <td>{{tikun.number}}</td>
+    <td>{{tikun.date}}</td>
+    <td>{{tikun.month}}</td>
+    <td>{{tikun.department}}</td>
+    <td>{{tikun.repNumber}}</td>
+    <td>{{tikun.model}}</td>
+    <td>{{tikun.imei}}</td>
+    <td>{{tikun.income}}</td>
+    <td>{{tikun.warranty}}</td>
+    <td>{{tikun.comm}}</td>
+    <td>{{tikun.technician}}</td>
+    <td>{{tikun.mins}}</td>
+    <td>{{tikun.repaired}}</td>
+       <td>1488</td>
+   </tr>
+
+
+</table>
+</body>
+</html>

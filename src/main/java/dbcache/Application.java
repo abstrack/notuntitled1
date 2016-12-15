@@ -21,11 +21,11 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-//    @Bean
-//    public Tikun getTikun() throws Exception {
-//       List<Tikun> tikuns = init();
-//        tikunRepo.deleteAll();
-//        tikunRepo.insert(tikuns);
-//      return new Tikun();
-//   }
+    @Bean
+    public Tikun getTikun() throws Exception {
+       List<Tikun> tikuns = init();
+        tikunRepo.deleteAll();
+        tikunRepo.insert(tikuns);
+      return new Tikun();
+   }
 }

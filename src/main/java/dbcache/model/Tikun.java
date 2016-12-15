@@ -1,6 +1,7 @@
 package dbcache.model;
 
 import lombok.*;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
@@ -10,9 +11,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document
-@RequiredArgsConstructor()
+
 public class Tikun {
-    @NonNull
+    String id1;
     String number;
     LocalDate date;
     String month;
@@ -22,8 +23,8 @@ public class Tikun {
     String IMEI;
     String income;
     String warranty;
-    String comm;
     String technician;
     String mins;
     String repaired;
+    String comm;
 }

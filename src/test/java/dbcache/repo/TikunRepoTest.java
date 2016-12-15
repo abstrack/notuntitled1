@@ -22,6 +22,6 @@ public class TikunRepoTest {
     TikunRepo tikunRepo;
     @Test
     public void runTest (){
-        tikunRepo.save(new Tikun("1"));
+        tikunRepo.save(new Tikun());
     }
 }

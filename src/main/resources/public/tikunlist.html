@@ -1,52 +1,70 @@
 <!doctype html>
-<html ng-app="myapp">
+<html ng-app="myapp" xmlns:ng="http://www.w3.org/1999/xhtml">
 <head>
     <title>tikuns application</title>
+    <link rel="stylesheet" type="text/css" href="Style.css" />
     <script src="https://code.angularjs.org/1.3.9/angular.js"></script>
     <script src="https://code.angularjs.org/1.3.9/angular-resource.js"></script>
     <script src="TikunController.js"></script>
 </head>
 
-<body ng-controller="TikunController">
-<table>
+<body>
+<a id="formLink" href="javascript:void(0)">Обратная связь</a>
+<div id="box" ng-controller="myCtrl2">
+    <div id="box-inner">
+
+    </div>
+
+        <form ng-submit="submit()" >
+            Enter text and hit enter:
+            <input type="text" ng-model="text" name="text" />
+            <input type="submit" id="submit" value="Submit" />
+            <pre>list={{list}}</pre>
+        </form>
+
+
+</div>
+<div ng-controller="TikunController">
+<table  >
     <thead>
     <tr>
-    <th>Number</th>
-    <th>Date</th>
-    <th>Month</th>
-    <th>Sniff</th>
-    <th>Number</th>
-    <th>Model</th>
-    <th>IMEI</th>
-    <th>Income</th>
-    <th>Warranty</th>
-    <th>Comments</th>
-    <th>Technician</th>
-    <th>Minutes</th>
-    <th>Repaired</th>
+        <th>Number</th>
+        <th>Date</th>
+        <th>Month</th>
+        <th>Sniff</th>
+        <th>Number</th>
+        <th>Model</th>
+        <th>IMEI</th>
+        <th>Income</th>
+        <th>Warranty</th>
+        <th>Technician</th>
+        <th>Minutes</th>
+        <th>Repaired</th>
+        <th>Comments</th>
     </tr>
     </thead>
 
 
-
-   <tr ng-repeat="tikun in tikunim">
-    <td>{{tikun.number}}</td>
-    <td>{{tikun.date}}</td>
-    <td>{{tikun.month}}</td>
-    <td>{{tikun.department}}</td>
-    <td>{{tikun.repNumber}}</td>
-    <td>{{tikun.model}}</td>
-    <td>{{tikun.imei}}</td>
-    <td>{{tikun.income}}</td>
-    <td>{{tikun.warranty}}</td>
-    <td>{{tikun.comm}}</td>
-    <td>{{tikun.technician}}</td>
-    <td>{{tikun.mins}}</td>
-    <td>{{tikun.repaired}}</td>
-       <td>1488</td>
-   </tr>
+    <tr ng-repeat="tikun in tikunim">
+        <td>{{tikun.number}}</td>
+        <td>{{tikun.date}}</td>
+        <td>{{tikun.month}}</td>
+        <td>{{tikun.department}}</td>
+        <td>{{tikun.repNumber}}</td>
+        <td>{{tikun.model}}</td>
+        <td>{{tikun.imei}}</td>
+        <td>{{tikun.income}}</td>
+        <td>{{tikun.warranty}}</td>
+        <td>{{tikun.technician}}</td>
+        <td>{{tikun.mins}}</td>
+        <td>{{tikun.repaired}}</td>
+        <td>{{tikun.comm}}</td>
+        <td>< <a href="javascript:void(0)" ng-click="delete(tikun.id1)">Delete</a>
+        </td>
+    </tr>
 
 
 </table>
+</div>
 </body>
 </html>

@@ -28,6 +28,7 @@ import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 import dbcache.model.Tikun;
 import dbcache.repo.TikunRepo;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class Quickstart {
@@ -129,7 +130,7 @@ public class Quickstart {
         Sheets service = getSheetsService();
 
         // Prints the names and majors of students in a sample spreadsheet:
-        // https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+        // https://docs.google.com/spreadsheets/d/1PD-kU7ioIeWTuLXjqASxTBxd2xG9HdaGcWs5niu-mbY/edit
         String spreadsheetId = "1PD-kU7ioIeWTuLXjqASxTBxd2xG9HdaGcWs5niu-mbY";
         String range = "מעבדה ראשית מ 1.08.16!A:M";
         int count = 0;
@@ -146,10 +147,24 @@ public class Quickstart {
            //         continue;
             //    }
                 try {
-                    Tikun e = new Tikun((String) row.get(0), LocalDate.parse((String) row.get(1), DateTimeFormatter.ofPattern("dd.MM.yyyy")), (String) row.get(2), (String) row.get(3), (String) row.get(4), (String) row.get(5), (String) row.get(6), (String) row.get(7), (String) row.get(8), (String) row.get(9), (String) row.get(10),(String) row.get(11), (String) row.get(12));
+
+                    Tikun e = new Tikun(new ObjectId().toString(),(String)row.get(0), LocalDate.parse((String) row.get(1), DateTimeFormatter.ofPattern("dd.MM.yyyy")), (String) row.get(2), (String) row.get(3), (String) row.get(4), (String) row.get(5), (String) row.get(6), (String) row.get(7),(String) row.get(8),(String) row.get(9),(String) row.get(10),(String) row.get(11),(String) row.get(12));
                     tikunim.add(e);
                     System.out.printf("%s, %s,%s,%s,%s\n", row.get(0), row.get(1), row.get(2), row.get(3), row.get(4));
-                } catch (Exception e) {
+                }
+                catch (IndexOutOfBoundsException e){
+                 try {
+                     Tikun tik = new Tikun(new ObjectId().toString(), (String) row.get(0), LocalDate.parse((String) row.get(1), DateTimeFormatter.ofPattern("dd.MM.yyyy")), (String) row.get(2), (String) row.get(3), (String) row.get(4), (String) row.get(5), (String) row.get(6), (String) row.get(7), (String) row.get(8), (String) row.get(9), (String) row.get(10), (String) row.get(11), "");
+                     tikunim.add(tik);
+                     System.out.printf("%s, %s,%s,%s,%s\n", row.get(0), row.get(1), row.get(2), row.get(3), row.get(4));
+                 }
+                 catch (IndexOutOfBoundsException es){
+                     count++;
+                     continue;
+                 }
+                }
+                catch (Exception e) {
+                    System.out.println(e);
                     System.out.println(" "+e.getCause()+" "+e.getMessage());
                     count++;
                     continue;

@@ -24,8 +24,8 @@ public class Application {
     @Bean
     public Tikun getTikun() throws Exception {
        List<Tikun> tikuns = init();
-        tikunRepo.deleteAll();
-        tikunRepo.insert(tikuns);
+       // tikunRepo.deleteAll();
+     //   tikunRepo.insert(tikuns);
       return new Tikun();
    }
 }

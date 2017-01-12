@@ -8,23 +8,34 @@
     <script src="TikunController.js"></script>
 </head>
 
-<body>
-<a id="formLink" href="javascript:void(0)">Обратная связь</a>
-<div id="box" ng-controller="myCtrl2">
+<body ng-controller="TikunController">
+<a id="formLink" href="javascript:void(0)">להוסיף תיקון
+</a>
+<div id="box">
     <div id="box-inner">
 
     </div>
 
         <form ng-submit="submit()" >
-            Enter text and hit enter:
-            <input type="text" ng-model="text" name="text" />
-            <input type="submit" id="submit" value="Submit" />
-            <pre>list={{list}}</pre>
+
+            <input type="text" ng-model="tikuned.number" name="number" placeholder="number"/>
+            <input type="text" ng-model="tikuned.department" name="department" placeholder="department"/>
+            <input type="text" ng-model="tikuned.repNumber" name="repNumber" placeholder="repNumber"/>
+            <input type="text" ng-model="tikuned.model" name="model" placeholder="model"/>
+            <input type="text" ng-model="tikuned.imei" name="imei" placeholder="imei"/>
+            <input type="text" ng-model="tikuned.income" name="income" placeholder="income"/>
+            <input type="text" ng-model="tikuned.warranty" name="warranty" placeholder="warranty"/>
+            <input type="text" ng-model="tikuned.technician" name="technician" placeholder="technician"/>
+            <input type="text" ng-model="tikuned.mins" name="mins" placeholder="mins"/>
+            <input type="text" ng-model="tikuned.repaired" name="repaired" placeholder="repaired"/>
+            <input type="text" ng-model="tikuned.comm" name="comm" placeholder="comm"/>
+            <a class="button" href="javascript:void(0)" ng-click="cancel()">Cancel</a>
+            <input class="button" type="submit" id="submit" value="Submit" />
         </form>
 
 
 </div>
-<div ng-controller="TikunController">
+<div >
 <table  >
     <thead>
     <tr>
@@ -32,7 +43,7 @@
         <th>Date</th>
         <th>Month</th>
         <th>Sniff</th>
-        <th>Number</th>
+        <th>#Repair</th>
         <th>Model</th>
         <th>IMEI</th>
         <th>Income</th>
@@ -60,6 +71,7 @@
         <td>{{tikun.repaired}}</td>
         <td>{{tikun.comm}}</td>
         <td>< <a href="javascript:void(0)" ng-click="delete(tikun.id1)">Delete</a>
+        <td>< <a href="javascript:void(0)" ng-click="edit(tikun.id1)">Edit</a>
         </td>
     </tr>
 

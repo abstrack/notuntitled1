@@ -2,6 +2,43 @@ var module = angular.module('myapp', []);
 
 module.controller('TikunController', function ($scope, $http) {
 
+    $scope.list = [];
+    $scope.text = 'hello';
+    $scope.submit = function() {
+        if ($scope.tikuned) {
+            $http({
+                    method: 'POST',
+                    url: '/tikunim',
+                    data: $scope.tikuned
+
+                }
+
+
+            ).success(
+
+                $http.get('http://localhost:8080/tikunim').success(function(data) {
+                    $scope.tikunim=data;
+                    document.getElementById("box").style.display = "none";
+                    document.getElementById("box-inner").style.display = "none";
+                }));
+
+        }
+    };
+    $scope.cancel = function () {
+        $scope.tikuned = {};
+        document.getElementById("box").style.display = "none";
+        document.getElementById("box-inner").style.display = "none";
+    }
+    $scope.edit = function (data) {
+    alert('edit'+data);
+     $http.get('http://localhost:8080/tikunim/edit/'+data).success( function (data1) {
+         $scope.tikuned = data1;
+          document.getElementById("box").style.display = "block";
+          document.getElementById("box-inner").style.display = "block";
+     })
+
+    };
+
     $scope.tikunim = [];
     $http.get('http://localhost:8080/tikunim').success(function(data) {
         $scope.tikunim=data;
@@ -12,36 +49,41 @@ module.controller('TikunController', function ($scope, $http) {
             $scope.tikunim=data;
         }));
 
-    }
+    };
 
     document.getElementById("formLink").onclick = function()
     {
+
         document.getElementById("box").style.display = "block";
         document.getElementById("box-inner").style.display = "block";
-    }
+    };
     document.getElementById("box").onclick = function(e)
     {
+
         if(e.toElement == document.getElementById("box-inner"))
         {
-            document.getElementById("box").style.display = "none";
-            document.getElementById("box-inner").style.display = "none";
+            // document.getElementById("box").style.display = "none";
+            // document.getElementById("box-inner").style.display = "none";
+
         }
     }
 
 });
-module.controller('myCtrl2', function($scope, $http) {
-    $scope.list = [];
-    $scope.text = 'hello';
-    $scope.submit = function() {
-        if ($scope.text) {
-            $http.post('http://localhost:8080/tikunim/'+$scope.text).success(
-                $http.get('http://localhost:8080/tikunim').success(function(data) {
-                    $scope.tikunim=data;
-                }));
-
-        }
-    };
-});
+// module.controller('myCtrl2', function($scope, $http) {
+//     $scope.list = [];
+//     $scope.text = 'hello';
+//     $scope.submit = function() {
+//         if ($scope.text) {
+//             $http.post('http://localhost:8080/tikunim/'+$scope.text).success(
+//                 $http.get('http://localhost:8080/tikunim').success(function(data) {
+//
+//                     $scope.tikunim=data;
+//
+//                 }));
+//
+//         }
+//     };
+// });
 /**
  * Created by mikhailrofel on 30/11/2016.
  */

@@ -17,6 +17,7 @@ import com.google.api.services.sheets.v4.Sheets;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -132,7 +133,7 @@ public class Quickstart {
         // Prints the names and majors of students in a sample spreadsheet:
         // https://docs.google.com/spreadsheets/d/1PD-kU7ioIeWTuLXjqASxTBxd2xG9HdaGcWs5niu-mbY/edit
         String spreadsheetId = "1PD-kU7ioIeWTuLXjqASxTBxd2xG9HdaGcWs5niu-mbY";
-        String range = "מעבדה ראשית מ 1.08.16!A:M";
+        String range = "מ.ר מ-1.08.16!A:M";
         int count = 0;
         ValueRange response = service.spreadsheets().values()
                 .get(spreadsheetId, range)
@@ -162,6 +163,12 @@ public class Quickstart {
                      count++;
                      continue;
                  }
+                }
+                catch (DateTimeException e){
+                    System.out.println(e);
+                    System.out.println(" "+e.getCause()+" "+e.getMessage());
+                    count++;
+                    continue;
                 }
                 catch (Exception e) {
                     System.out.println(e);
